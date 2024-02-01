@@ -2,12 +2,19 @@ import React from 'react'
 import Image from "next/image"
 import Link from 'next/link'
 
-const AnimeList = ({title, images, id}) => {
+const AnimeList = ({api}) => {
   return (
-    <Link href={`${id}`}>
-      <Image src={images} alt={title} width={350} height={350} className='w-full max-h-80 object-cover'/>
-      <h1 className='font-bold text-xl md:text-2xl text-center'>{title}</h1>
-    </Link>
+    <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 px-4'>
+      {api.data.map((data) => {
+        return (
+          <Link href={`${data.mal_id}`}>
+            <Image src={data.images.webp.image_url} alt={data.title} width={350} height={350} className='w-full max-h-80 object-cover'/>
+            <h1 className='font-bold text-xl md:text-2xl text-center'>{data.title}</h1>
+          </Link>
+        )
+      })}
+      
+    </div>
   )
 }
 
