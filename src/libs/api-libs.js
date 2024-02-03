@@ -4,4 +4,9 @@ const ApiLibs = async ({resource, query = ""}) => {
   return anime
 }
 
+export const getNestedAnimeResponse = async (resource, objectProperty) => {
+  const response = await ApiLibs({resource: resource, query: "limit=10"});
+  return response.data.flatMap(item => item.entry)
+}
+
 export default ApiLibs
