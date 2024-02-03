@@ -1,7 +1,7 @@
 // "use client"
 import AnimeList from "@/components/AnimeList";
 import Header from "@/components/AnimeList/Header";
-import ApiLibs, { getNestedAnimeResponse } from "../libs/api-libs";
+import ApiLibs, { getNestedAnimeResponse, reproduce } from "../libs/api-libs";
 
 const Page = async () => {
   // const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL}/top/anime?limit=10`)
@@ -11,10 +11,15 @@ const Page = async () => {
     query: "limit=10"
   })
 
+  
   let recommendAnime = await getNestedAnimeResponse("recommendations/anime", "entry")
-  console.log(Math.floor(Math.random() * 199));
+  // let random1 = Math.floor(Math.random() * recommendAnime.length)
+  // let random2 = random1 + 5
+  // recommendAnime = {
+  //   data: recommendAnime.slice(random1, random2)
+  // }
   recommendAnime = {
-    data: recommendAnime.slice(0, 5)
+    data: reproduce(recommendAnime, 5)
   }
 
   return (

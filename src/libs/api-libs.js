@@ -9,4 +9,11 @@ export const getNestedAnimeResponse = async (resource, objectProperty) => {
   return response.data.flatMap(item => item.entry)
 }
 
+export const reproduce = (data, gap) => {
+  const first = Math.floor(Math.random() * data.length - gap) - 1
+  const last = first + gap
+
+  return data.slice(first, last)
+}
+
 export default ApiLibs
