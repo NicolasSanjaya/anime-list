@@ -1,6 +1,7 @@
 import React from 'react'
 import Link from 'next/link'
 import InputSearch from './InputSearch'
+import UserActionButton from './UserActionButton'
 
 const Navbar = () => {
   return (
@@ -8,6 +9,7 @@ const Navbar = () => {
       <div className='flex flex-col sm:flex-row justify-between p-4 gap-2 md:items-center'>
         <Link href={"/"} className='font-bold text-2xl text-white text-center drop-shadow-md'>Anime List</Link>
         <InputSearch />
+        <UserActionButton />
       </div>
     </header>
   )
