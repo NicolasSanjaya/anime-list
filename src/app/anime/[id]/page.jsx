@@ -6,6 +6,8 @@ import Image from "next/image"
 import CollectionButton from "@/components/AnimeList/CollectionButton";
 import authUserSession from "@/libs/auth-libs";
 import prisma from "@/libs/prisma";
+import CommentInput from "@/components/AnimeList/CommentInput";
+import CommentBox from "@/components/AnimeList/CommentBox";
 
 const Page = async ({params}) => {
   // const keyword = params.keyword.replaceAll("%20", " ")
@@ -22,9 +24,9 @@ const Page = async ({params}) => {
 
   return (
     <>
-      <section className="md:p-8 px-4 py-">
+      <section className="md:p-8 px-4 py-2">
         <Header title={`${searchAnime.data.title} - ${searchAnime.data.year}`} />
-        { id === collection?.mal_id || !user ? null : <CollectionButton anime_mal_id={id} user_email={user?.email}/> }
+        { id === collection?.mal_id || !user ? null : <CollectionButton anime_mal_id={id} user_email={user?.email} anime_image={searchAnime.data.images.webp.image_url} anime_title={searchAnime.data.title}/> }
         <div className="pt-4 px-4 flex gap-8 text-primary overflow-x-auto items-center">
           <div className="w-36 border rounded-md border-accent p-4 text-center">
             <h3 className="text-accent">Peringkat {searchAnime.data.rank}</h3>
@@ -44,6 +46,10 @@ const Page = async ({params}) => {
           <p className="text-justify text-lg">{searchAnime.data.synopsis}</p>
         </div>
       </section>
+      <div className="m-4 px-8 py-4">
+        { user && <CommentInput mal_id={id} user_email={user?.email} username={"Nisan"} anime_title={searchAnime.data.title} /> }
+        <CommentBox mal_id={id}/>
+      </div>
       <div>
         <VideoPlayer videoId={searchAnime.data.trailer.youtube_id} />
       </div>

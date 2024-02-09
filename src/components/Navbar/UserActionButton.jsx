@@ -8,7 +8,7 @@ const UserActionButton = async () => {
     <div className='flex justify-center items-center gap-4'>
       <h1 className='text-center'>{user?.name}</h1>
       <Link href={"/users/dashboard"} className={`${user ? "block" : "hidden"} p-4 rounded-sm bg-dark text-primary`}>Dashboard</Link>
-      <Link href={user ? "/api/auth/signout" : "/api/auth/signin"} className='p-4 bg-primary rounded-md text-center'>{user ? "Sign Out" : "Sign In"}</Link>
+      <Link href={user ? "/api/auth/signout" : "/api/auth/signin"} className='p-4 bg-red-500 text-primary rounded-md text-center'>{user ? "Sign Out" : "Sign In"}</Link>
     </div>
   )
 }

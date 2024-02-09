@@ -14,6 +14,19 @@ model Collection{
   id Int @id @default(autoincrement())
   mal_id String
   user_email String
+  anime_image String?
+  anime_title String?
 
   @@unique([mal_id, user_email])
+}
+
+model Comment{
+  id Int @id @default(autoincrement())
+  mal_id String
+  user_email String
+  comment String?
+  username String
+  anime_title String?
+
+  // @@unique([mal_id, user_email, username])
 }

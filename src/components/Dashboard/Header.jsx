@@ -12,7 +12,7 @@ const DashboardHeader = ({title = "My Collection"}) => {
   return (
     <div className='flex justify-between items-center gap-4 my-6'>
       <button onClick={handleBack} className='p-4 bg-accent rounded-md'><ArrowFatLeft size={32} /></button>
-      <h3 className='text-2xl text-primary'>{title}</h3>
+      <h3 className='text-4xl font-bold text-primary'>{title}</h3>
     </div>
   )
 }
